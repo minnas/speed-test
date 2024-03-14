@@ -56,10 +56,3 @@ export const themeDark: Itheme = {
 export const themeLight: Itheme = {
   ...colors2,
 };
-export const paintColors = [
-  "#000000",
-  "#FF0000",
-  "#0000FF",
-  "#008000",
-  "#7F00FF",
-];
