@@ -1,30 +1,45 @@
-# React + TypeScript + Vite
+![](https://img.shields.io/badge/React-informational?style=flat&logo=react&logoColor=5ed3f3&color=282c34)&nbsp;
+![](https://img.shields.io/badge/TypeScript-informational?style=flat&logo=typescript&logoColor=white&color=0076c6)&nbsp;
+![](https://img.shields.io/badge/Vite-informational?style=flat&logo=vite&logoColor=white&color=646cff)
+![](https://img.shields.io/badge/Docker-informational?style=flat&logo=docker&logoColor=white&color=2392e6)
+![](https://img.shields.io/badge/React%20Redux-informational?style=flat&logo=redux&logoColor=white&color=764abc)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Speed test
 
-Currently, two official plugins are available:
+This a simple demo for speed test.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## To Start
 
-## Expanding the ESLint configuration
+- install pnpm (npm install -g pnpm)
+- run <code>pnpm install && pnpm dev</code>
+- open url in browser http://localhost:3000/
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## In Docker
 
-- Configure the top-level `parserOptions` property like this:
+- <code>docker build -t speed-test .</code>
+- <code>docker run -d --rm -p 3000:3000 --name speed-test speed-test</code>
+- open url in browser http://localhost:3000/
+- (see running containers with docker ps)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Using Docker compose
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- <code>docker-compose up --build -d</code>
+- open url in browser http://localhost:3000/
+
+## App Structure:
+
+STORE:
+- stores game scores and theme
+
+UTILS:
+- helper functions
+
+TYPES:
+- data types
+
+HOOKS:
+- custom hook for interval
+
+VIEWS:
+- app views and other components
+
