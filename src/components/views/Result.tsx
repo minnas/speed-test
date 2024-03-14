@@ -5,6 +5,7 @@ import { Itheme } from "@Components/styles/theme";
 import { Score } from "@Types/types";
 import { useSelector } from "react-redux";
 import { RootState } from "@Store/store";
+import { formatDate } from "@Utils/utils";
 
 const Result = (): ReactElement => {
   const theme = useTheme<Itheme>();
@@ -12,12 +13,11 @@ const Result = (): ReactElement => {
   //store functions
   const scores = useSelector((state: RootState) => state.scores);
 
-  const formatDate = (time: number) => new Date(time).getUTCDate();
-
   return (
     <div className={stylesContent.content}>
+      <h2 className={stylesContent.subtitle}>Saved Scores</h2>
       {scores.map((score: Score, index: number) => (
-        <div key={index}>
+        <div key={index} className={stylesContent.item}>
           {formatDate(score.timestamp)} : {score.score}
         </div>
       ))}

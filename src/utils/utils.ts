@@ -14,3 +14,9 @@ export const pages: Page[] = [
   { path: "/", icon: faGamepad },
   { path: "/result", icon: faList },
 ];
+
+export const formatDate = (time: number) => {
+  const d = new Date();
+  d.setTime(time);
+  return d.toLocaleTimeString();
+};

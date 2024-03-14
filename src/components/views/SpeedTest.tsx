@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { randomNumber } from "@Utils/utils";
 import { addScore } from "@Store/dataSlices";
 import { Score } from "@Types/types";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 /**Speed test */
 const SpeedTest = (): ReactElement => {
@@ -25,6 +26,7 @@ const SpeedTest = (): ReactElement => {
   const [current, setCurrent] = useState<number>(-1);
   const [score, setScore] = useState<number>(-1);
   const [order, setOrder] = useState<number[]>([]);
+  const [saved, setSaved] = useState<boolean>(false);
   //game button colours
   const colors: ButtonColor[] = ["RED", "YELLOW", "GREEN", "ORANGE"];
 
@@ -92,10 +94,19 @@ const SpeedTest = (): ReactElement => {
         score,
       } as Score)
     );
+    setSaved(true);
+    setTimeout(() => {
+      setSaved(false);
+    }, 800);
   };
 
   return (
     <div className={stylesContent.content}>
+      <div className={stylesContent.game}>
+        <div className={stylesContent.item}>
+          Time: <span>{time}</span> seconds
+        </div>
+      </div>
       <div className={stylesContent.game}>
         {colors.map((color: string, index: number) => (
           <GameButton
@@ -111,17 +122,16 @@ const SpeedTest = (): ReactElement => {
         <Button label="stop" onClick={() => stop()} />
       </div>
       <div className={stylesContent.game}>
-        <div>
-          Time: <span>{time}</span> seconds
+        <div className={stylesContent.item}>
+          Scores: <span>{score > -1 && score}</span>
         </div>
       </div>
       <div className={stylesContent.game}>
-        <div>
-          Scores: <span>{score > -1 && score}</span> points
-        </div>
-      </div>
-      <div className={stylesContent.game}>
-        <Button label="save result" onClick={() => save()} />
+        <Button
+          label="save result"
+          onClick={() => save()}
+          icon={saved ? faCheck : undefined}
+        />
       </div>
     </div>
   );

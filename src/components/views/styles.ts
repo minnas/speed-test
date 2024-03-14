@@ -7,8 +7,7 @@ import {
 
 type RuleFooterNames = "footer";
 type RuleHeaderNames = "header";
-type RuleContentNames = "content" | "game";
-type RuleItemNames = "item";
+type RuleContentNames = "content" | "item" | "game" | "subtitle";
 type RuleTitleNames = "title" | "icon";
 type RuleLayoutNames = "layout";
 
@@ -49,6 +48,19 @@ export const useContentStyles = createUseStyles<RuleContentNames, Itheme>({
     justifyContent: "center",
     alignItems: "center",
   }),
+  item: (theme) => ({
+    ...layoutFlexRow,
+    padding: "1rem 2rem",
+    color: theme?.highlightColor,
+    fontSize: "2rem",
+    lineHeight: "2rem",
+  }),
+  subtitle: (theme) => ({
+    ...layoutFlexRow,
+    color: theme?.highlightColor,
+    fontSize: "2rem",
+    lineHeight: "2rem",
+  }),
 });
 export const useTitleStyles = createUseStyles<RuleTitleNames, Itheme>({
   title: (theme) => ({
@@ -59,17 +71,6 @@ export const useTitleStyles = createUseStyles<RuleTitleNames, Itheme>({
     boxShadow: `${theme.highlightColor5} 0 10px 1rem`,
     borderRadius: "15px",
     padding: "0 5px",
-  }),
-});
-export const useItemStyles = createUseStyles<RuleItemNames, Itheme>({
-  item: (theme) => ({
-    ...layoutFlexRow,
-    transition: "all 0.25s ease",
-    padding: "1rem 2rem",
-    color: theme?.highlightColor,
-    fontSize: "2rem",
-    lineHeight: "2rem",
-    cursor: "pointer",
   }),
 });
 export const useLayoutStyles = createUseStyles<RuleLayoutNames, Itheme>({
