@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 import { Score, Theme } from "@Types/types";
-
+//theme
 const themeSlice = createSlice({
   name: "theme",
   initialState: { theme: "dark" } as Theme,
@@ -11,6 +11,7 @@ const themeSlice = createSlice({
     },
   },
 });
+//game
 const gameSlice = createSlice({
   name: "game",
   initialState: [] as Score[],
@@ -23,9 +24,9 @@ const gameSlice = createSlice({
     },
   },
 });
-/**reducers */
+//reducers
 export const themeReducer = themeSlice.reducer;
 export const gameReducer = gameSlice.reducer;
-/**actions */
+//actions
 export const { toggle } = themeSlice.actions;
 export const { addScore, removeScore } = gameSlice.actions;

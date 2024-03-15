@@ -1,19 +1,17 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-/**
- * Represents game score object
- */
+//game score
 export type Score = {
   id?: string;
   user?: string;
   score: number;
   timestamp: number;
 };
-/**Theme */
+//theme
 export type Theme = {
   theme: "light" | "dark";
 };
-
+//page type for footer
 export type Page = {
   path: string;
   icon: IconProp;

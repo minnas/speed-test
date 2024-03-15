@@ -14,7 +14,7 @@ export const pages: Page[] = [
   { path: "/", icon: faGamepad },
   { path: "/result", icon: faList },
 ];
-
+//returns time in correct format
 export const formatDate = (time: number) => {
   const d = new Date();
   d.setTime(time);
