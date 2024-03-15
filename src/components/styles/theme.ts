@@ -1,3 +1,4 @@
+//dark theme colours
 const colors = {
   highlightColor: "rgba(148, 104, 254, 1)",
   highlightColor8: "rgba(148, 104, 254, .8)",
@@ -11,6 +12,7 @@ const colors = {
   shadowColor8: "rgba(0, 0, 0, .8)",
   bgColor: "#242424",
 };
+//light theme colours
 const colors2 = {
   highlightColor: "rgba(0, 102, 204, 1)",
   highlightColor8: "rgba(0, 102, 204, .8)",
@@ -24,7 +26,7 @@ const colors2 = {
   shadowColor8: "rgba(0, 0, 0, .8)",
   bgColor: "#ffffff",
 };
-
+//common layout flex-box
 export const layoutFlexRow = {
   display: "flex",
   flexDirection: "row",
@@ -37,6 +39,7 @@ export const layoutFlexColumn = {
   flexDirection: "column",
   justifyContent: "center",
 };
+//theme properties
 export interface Itheme {
   highlightColor: string;
   highlightColor8: string;

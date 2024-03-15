@@ -7,14 +7,16 @@ import { Itheme } from "@Components/styles/theme";
 import { Page } from "@Types/types";
 import { pages } from "@Utils/utils";
 
+//Application Footer
 const Footer = (): ReactElement => {
+  //theme and styles
   const theme = useTheme<Itheme>();
   const styles = useFooterStyles(theme);
   const navigate = useNavigate();
   const location = useLocation();
 
+  //navigate to page
   const goToPage = (item: Page) => {
-    console.log("Go to my page " + item.path);
     navigate(item.path);
   };
 

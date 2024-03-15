@@ -9,13 +9,15 @@ import { RootState } from "@Store/store";
 import Button from "@Components/tools/Button";
 import { toggle } from "@Store/dataSlices";
 
+//Application Header
 const Header = (): ReactElement => {
+  //theme and styles
   const selectedTheme = useSelector((state: RootState) => state.theme);
   const dispatch = useDispatch();
   const theme = useTheme<Itheme>();
   const styles = useHeaderStyles(theme);
   const titleStyles = useTitleStyles(theme);
-
+  //toggle selected theme (dark/white)
   const toggleTheme = () => {
     dispatch(toggle());
   };

@@ -11,22 +11,22 @@ import { addScore } from "@Store/dataSlices";
 import { Score } from "@Types/types";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-/**Speed test */
+//Speed test
 const SpeedTest = (): ReactElement => {
   //theme
   const theme = useTheme<Itheme>();
   const stylesContent = useContentStyles(theme);
   //store functions
   const dispatch = useDispatch();
-
   //states
   const [time, setTime] = useState<number>(0);
   const [gameStarted, setGameStarted] = useState<boolean>(false);
   const [speed, setSpeed] = useState<number>(1500);
   const [current, setCurrent] = useState<number>(-1);
-  const [score, setScore] = useState<number>(-1);
+  const [score, setScore] = useState<number>(0);
   const [order, setOrder] = useState<number[]>([]);
   const [saved, setSaved] = useState<boolean>(false);
+  const [gameOver, setGameOver] = useState<boolean>(false);
   //game button colours
   const colors: ButtonColor[] = ["RED", "YELLOW", "GREEN", "ORANGE"];
 
@@ -50,43 +50,45 @@ const SpeedTest = (): ReactElement => {
     const nextActive = randomNumber(3, current);
     const tmp = order;
     tmp.push(nextActive);
-    /**update game state */
+    //update game state
     setCurrent(nextActive);
     setSpeed(speed * 0.95);
     setOrder(tmp);
     setSpeed(speed * 0.95);
   };
-
-  /**game button click */
+  //game button click
   const onClick = (id: number) => {
     const copy = order;
     const test = copy.shift();
-
+    //check if correct circle clicked
     if (test !== id) {
       stop();
+      setGameOver(true);
+      setTimeout(() => {
+        setGameOver(false);
+      }, 1500);
       return;
     }
-    /**update game state */
+    //update game state
     setOrder(copy);
     setScore(score + 1);
   };
-
+  //reset game
   const reset = () => {
     setCurrent(-1);
     setSpeed(1500);
     setOrder([]);
   };
-
+  //start game
   const start = () => {
     reset();
     setGameStarted(true);
   };
-
+  //stop game
   const stop = () => {
-    //reset game state
     setGameStarted(false);
   };
-
+  //save scores
   const save = () => {
     dispatch(
       addScore({
@@ -104,7 +106,11 @@ const SpeedTest = (): ReactElement => {
     <div className={stylesContent.content}>
       <div className={stylesContent.game}>
         <div className={stylesContent.item}>
-          Time: <span>{time}</span> seconds
+          {gameOver ? (
+            <span>Game Over!!</span>
+          ) : (
+            <span>Time: {time} seconds</span>
+          )}
         </div>
       </div>
       <div className={stylesContent.game}>

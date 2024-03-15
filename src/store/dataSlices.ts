@@ -18,6 +18,9 @@ const gameSlice = createSlice({
     addScore: (state, action) => {
       state.push({ ...action.payload, id: uuidv4() } as Score);
     },
+    removeScore: (state, action) => {
+      return state.filter((s: Score) => s.id !== action.payload.id);
+    },
   },
 });
 /**reducers */
@@ -25,4 +28,4 @@ export const themeReducer = themeSlice.reducer;
 export const gameReducer = gameSlice.reducer;
 /**actions */
 export const { toggle } = themeSlice.actions;
-export const { addScore } = gameSlice.actions;
+export const { addScore, removeScore } = gameSlice.actions;
